@@ -5,9 +5,9 @@
 -- 
 -- Business context: Six analytical queries against 26 months
 -- of fuel sales and profit data (Jan 2024 - Feb 2026) from a
--- gas station back office system. These queries surface
+-- gas station back office. These queries surface
 -- operational and financial patterns not visible in the
--- canned reports provided by the Modisoft POS system.
+-- canned reports provided by the back office.
 --
 -- All queries verified against source Excel exports.
 -- Data quality limitations documented in
@@ -286,12 +286,11 @@ ORDER BY AvgDailyGallons DESC;
 --     consistent with no commercial traffic on weekends.
 --     Legitimate zero-sale days not missing data.
 --   - Exception: Nov 20-29 2024 shows 9 consecutive Diesel
---     zero days including weekdays. Possible pump issue.
+--     zero days including weekdays. Tank issue.
 --   - January 25 2026 shows ALL grades at zero. Station
 --     interior was closed due to ice storm. Fuel pumps were
---     operational but no sales recorded — likely a Modisoft
---     data import failure during the storm. Treated as
---     missing data not a true zero-sale day.
+--     operational but no sales recorded — likely a
+--     data import failure.
 -- ------------------------------------------------------------
 SELECT
     fs.SaleDate,
